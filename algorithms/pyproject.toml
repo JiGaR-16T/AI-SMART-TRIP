@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "travelmind-algorithms"
+version = "0.1.0"
+description = "Pure Python algorithms package for TravelMind optimization and planning"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [
+    { name = "TravelMind Team" }
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.3.0",
+    "mypy>=1.9.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["algorithms*"]
+
+[tool.pytest.ini_options]
+testpaths = ["../tests/algorithms"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+addopts = "-v --strict-markers"

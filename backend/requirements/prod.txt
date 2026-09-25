@@ -1,0 +1,5 @@
+# TravelMind Backend - Production Server Requirements
+-r base.txt
+
+gunicorn>=22.0.0
+uvicorn>=0.29.0

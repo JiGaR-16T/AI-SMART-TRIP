@@ -8,8 +8,8 @@
 
 | Part | Title | Status | Date | Commit | Notes |
 |------|-------|--------|------|--------|-------|
-| 0 | Project Constitution & Engineering Rules | ✅ DONE | 2026-09-25 | *pending git install* | Rulebook, folder skeleton, docs |
-| 1 | Backend & Frontend Scaffolding | ⬜ NOT STARTED | — | — | Django + React + Vite setup |
+| 0 | Project Constitution & Engineering Rules | ✅ DONE | 2026-09-25 | 827c6d0 | Rulebook, folder skeleton, docs |
+| 1 | Repository & System Foundation | ✅ DONE | 2026-09-25 | *current branch* | Django DRF + React Vite TS + pure Python algorithms + Docker & CI |
 | 2 | Database Design & Models | ⬜ NOT STARTED | — | — | PostgreSQL schema, migrations |
 | 3 | Search Autocomplete (Trie) | ⬜ NOT STARTED | — | — | Trie data structure, search API |
 | 4 | Route Optimization (Graph + Dijkstra/A*) | ⬜ NOT STARTED | — | — | Shortest path algorithms |
