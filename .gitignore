@@ -1,0 +1,117 @@
+# ===================================================================
+# TravelMind .gitignore
+# Covers: Python, Node.js, Django, env files, IDEs, OS, Docker
+# ===================================================================
+
+# ----- Python -----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+*.whl
+.Python
+develop-eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-log.txt
+pip-delete-this-directory.txt
+.installed.cfg
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# pytest
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# mypy / pyright
+.mypy_cache/
+.pyright/
+.dmypy.json
+dmypy.json
+
+# ruff
+.ruff_cache/
+
+# ----- Node.js -----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# ----- Frontend Build -----
+frontend/dist/
+frontend/build/
+*.tsbuildinfo
+
+# ----- Django -----
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+static_collected/
+
+# ----- Environment Variables -----
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# ----- IDE / Editor -----
+.vscode/
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+*.sublime-project
+
+# ----- OS Generated -----
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ----- Docker -----
+docker-compose.override.yml
+.docker/
+
+# ----- Misc -----
+*.bak
+*.tmp
+*.temp
+*.orig
+.cache/

@@ -1,0 +1,203 @@
+=====================================================================
+TRAVELMIND — COMMON CONTEXT (applies to EVERY part)
+=====================================================================
+PROJECT
+TravelMind: An Intelligent Travel Planning and Multi-Objective Optimization System Using AI and Data Structures & Algorithms.
+A full-stack, India-first travel planner where AI understands the request and REAL algorithms (Trie, heaps, sorting, graphs, Dijkstra, A*, DP, Knapsack, backtracking, Pareto optimization) do the actual computing. It must be a genuinely intelligent system, not a CRUD site that only looks smart.
+
+STACK
+Frontend: React + Vite + TypeScript. Backend: Python + Django + Django REST Framework. Database: PostgreSQL. Cache/broker: Redis. Background jobs: Celery. Auth: JWT. Docs: OpenAPI (drf-spectacular). Tests: pytest / Vitest / React Testing Library / Playwright. Infra: Docker + docker-compose + GitHub Actions.
+
+YOUR ROLE
+You are the lead architect and senior engineer (full-stack, DSA, AI integration, database, QA, DevOps, docs). I am a BEGINNER/FRESHER building this as a major college Software Engineering project. I want you to actually DO the work in this workspace: inspect, create files, install dependencies, write code, run commands, fix errors. Never tell me to create or paste files manually.
+
+GOLDEN RULES
+1. Implement THIS PART ONLY. Do not start future parts unless something is a genuine dependency (then keep it minimal and say so).
+2. FIRST inspect: `git status`, folder tree, package/requirements files, env files, existing tests, docs/. Read docs/ENGINEERING_CONSTITUTION.md and docs/PROGRESS.md if they exist. Never assume anything exists. Never overwrite working code without a reason.
+3. Before coding, show me a SHORT plan (what you found, what you will add/change, risks). Then implement.
+4. AI is NEVER the source of truth for deterministic work (costs, budgets, routes, scheduling, constraints, ranking). AI is for language understanding, suggestions and explanations. All AI output is validated by deterministic code.
+5. The `algorithms/` package is pure Python and must NOT import Django.
+6. No business logic in React components, Django views or serializers. Use service/use-case modules.
+7. Never hard-code secrets. Use environment variables, `.env` (git-ignored) and `.env.example`. Every external service needs a provider interface plus a mock/demo provider so the app always works offline.
+8. Every data value shown to users carries a trust label: LIVE, ESTIMATED, CACHED, or DEMO. Never present demo/estimated data as live. Never invent live prices, availability, weather or routes.
+9. Consistent API error format: {"success": false, "error": {"code": "...", "message": "...", "details": {}}}. Never leak stack traces, secrets or tokens.
+10. Testing is mandatory: write tests, RUN them, and fix failures yourself. Also run lint, type-check and build. Do not just report errors; fix root causes and re-run.
+11. Detect my operating system (I may be on Windows). Use cross-platform commands/scripts and tell me exactly what to install if a tool (Docker, Node, Python, PostgreSQL, Redis) is missing. If Docker is unavailable, provide a documented fallback so work can continue.
+12. Update the documentation and docs/PROGRESS.md for this part.
+13. Git: create branch `feat/part-XX-<name>`, make meaningful conventional commits (feat:, fix:, test:, docs:, chore:), run `git status` before and after, never force-push. Merge into main only after everything passes.
+14. Do not over-engineer. Do not add libraries without a reason. Keep code readable with docstrings/comments where they help a beginner learn.
+15. Do not claim completion unless you have actually verified it. If something blocks you, report "PART X BLOCKED" and explain the real blocker.
+
+ENGINE CONTRACT (used from Part 1 onward)
+Every engine/service returns an EngineResult: { data, explanation, algorithm_receipt, data_labels }. The AlgorithmReceipt records algorithm name, input size, nodes/steps explored, comparisons, elapsed time, and time/space complexity, and is shown in the UI.
+
+FINAL REPORT FORMAT (mandatory)
+End with:
+PART X COMPLETE
+- Implemented
+- Files Added (exact paths)
+- Files Modified
+- Dependencies Added
+- Tests Added
+- Verification: Tests PASS/FAIL | Lint PASS/FAIL | Type Check PASS/FAIL | Build PASS/FAIL
+- Documentation Updated
+- How I can verify it myself (exact commands + what I should see in the browser)
+- Simple explanation of what was built and why (beginner language, explain new terms briefly)
+- Known Limitations
+- Next Recommended Phase
+Then STOP and wait for me.
+=====================================================================
+
+CURRENT PART: PART 0 — PROJECT CONSTITUTION & ENGINEERING RULES
+Use branch name: feat/part-00-constitution
+==================================================
+GOAL
+Set up the "rulebook" of the project so every later part stays consistent. NO application code in this part.
+
+DEPENDS ON: nothing. If the file docs/SPEC.md exists, read it fully (it is the master specification). If it does not exist, tell me to add it, but continue with the context in this prompt.
+
+IN SCOPE
+1. Inspect the workspace. If it is not a Git repository, run `git init` and create the `main` branch. If it already contains work, keep it and report what exists.
+2. Create the base folder skeleton (empty folders get a .gitkeep):
+   frontend/  backend/  algorithms/  data/seed/  infrastructure/{docker,redis,celery}/  docs/{architecture,api,algorithms,database,testing,deployment,college,adr}/  tests/{algorithms,backend,frontend,integration,e2e}/  scripts/
+3. Create docs/ENGINEERING_CONSTITUTION.md containing: project vision; the 7-layer architecture (Experience -> API -> Application -> Domain -> DSA/Optimization -> Data/Integration -> Infrastructure); the golden rules from the common context; naming conventions (Python: snake_case, PEP8, type hints; TS: strict mode, PascalCase components, camelCase functions); folder ownership rules; API conventions (/api/v1/, error format, pagination format, ISO dates, INR money as integer paise or Decimal — decide and document); the trust-label system (LIVE/ESTIMATED/CACHED/DEMO); the EngineResult/AlgorithmReceipt contract; the Definition of Done; the Git workflow; the security rules; the testing pyramid and coverage targets (algorithms >= 90%, backend >= 80%).
+4. Create docs/PROGRESS.md: a table of PART 0–19 with status (NOT STARTED / IN PROGRESS / DONE), date, commit hash, notes. Mark Part 0 as DONE at the end.
+5. Create docs/adr/0000-template.md and docs/adr/0001-modular-monolith.md (why a modular monolith, not microservices) and 0002-ai-is-not-source-of-truth.md.
+6. Create root files: .gitignore (Python, Node, Django, env files, IDE, OS junk, Docker volumes), .editorconfig, .gitattributes (normalize line endings, important for Windows), README.md (project title, one-paragraph pitch, "status: Part 0", folder map, link to docs), LICENSE (ask me which one, default MIT), CONTRIBUTING.md (branching + commit rules), .github/pull_request_template.md with the Definition-of-Done checklist, .github/ISSUE_TEMPLATE basic bug/feature templates.
+7. Create a Git commit message convention doc (conventional commits with examples from this project).
+8. Create docs/GLOSSARY.md explaining project terms for a beginner (JWT, DRF, Celery, Redis, Trie, Heap, Dijkstra, A*, Knapsack, Pareto front, etc. in 1–2 lines each).
+9. If your IDE supports workspace rules / persistent instructions, ALSO write a condensed version of the constitution there so it applies automatically in future sessions. Tell me where you put it.
+
+OUT OF SCOPE: any Django/React/Docker code (Part 1+).
+
+TESTS / VERIFICATION
+- `git status` clean after commit; markdown files render; no broken relative links (write a tiny script scripts/check_docs_links.py or use a tool and run it).
+
+GIT: branch `chore/part-00-constitution`, commits like `docs: add engineering constitution`, then merge to main.
+
+=====================================================================
+END OF PART 0 PROMPT. When finished, give the final report and STOP. Do NOT start PART 1.
+=====================================================================
+=====================================================================
+MANDATORY SELF-CHECK (do this before writing your final report)
+=====================================================================
+Go back through every numbered requirement in the IN SCOPE / REQUIREMENTS 
+sections above, one by one. For each one, confirm you actually implemented 
+AND tested it — do not rely on memory of what you intended to do.
+
+Build a checklist table: Requirement # | Status (DONE / PARTIAL / SKIPPED) | 
+Evidence (file/test/command that proves it).
+
+If anything is PARTIAL or SKIPPED, either fix it now, or list it honestly 
+under "Known Limitations" in your final report — never omit it silently 
+and never mark the part COMPLETE while calling it done in prose.
+=====================================================================
+=====================================================================
+TRAVELMIND — COMMON CONTEXT (applies to EVERY part)
+=====================================================================
+PROJECT
+TravelMind: An Intelligent Travel Planning and Multi-Objective Optimization System Using AI and Data Structures & Algorithms.
+A full-stack, India-first travel planner where AI understands the request and REAL algorithms (Trie, heaps, sorting, graphs, Dijkstra, A*, DP, Knapsack, backtracking, Pareto optimization) do the actual computing. It must be a genuinely intelligent system, not a CRUD site that only looks smart.
+
+STACK
+Frontend: React + Vite + TypeScript. Backend: Python + Django + Django REST Framework. Database: PostgreSQL. Cache/broker: Redis. Background jobs: Celery. Auth: JWT. Docs: OpenAPI (drf-spectacular). Tests: pytest / Vitest / React Testing Library / Playwright. Infra: Docker + docker-compose + GitHub Actions.
+
+YOUR ROLE
+You are the lead architect and senior engineer (full-stack, DSA, AI integration, database, QA, DevOps, docs). I am a BEGINNER/FRESHER building this as a major college Software Engineering project. I want you to actually DO the work in this workspace: inspect, create files, install dependencies, write code, run commands, fix errors. Never tell me to create or paste files manually.
+
+GOLDEN RULES
+1. Implement THIS PART ONLY. Do not start future parts unless something is a genuine dependency (then keep it minimal and say so).
+2. FIRST inspect: `git status`, folder tree, package/requirements files, env files, existing tests, docs/. Read docs/ENGINEERING_CONSTITUTION.md and docs/PROGRESS.md if they exist. Never assume anything exists. Never overwrite working code without a reason.
+3. Before coding, show me a SHORT plan (what you found, what you will add/change, risks). Then implement.
+4. AI is NEVER the source of truth for deterministic work (costs, budgets, routes, scheduling, constraints, ranking). AI is for language understanding, suggestions and explanations. All AI output is validated by deterministic code.
+5. The `algorithms/` package is pure Python and must NOT import Django.
+6. No business logic in React components, Django views or serializers. Use service/use-case modules.
+7. Never hard-code secrets. Use environment variables, `.env` (git-ignored) and `.env.example`. Every external service needs a provider interface plus a mock/demo provider so the app always works offline.
+8. Every data value shown to users carries a trust label: LIVE, ESTIMATED, CACHED, or DEMO. Never present demo/estimated data as live. Never invent live prices, availability, weather or routes.
+9. Consistent API error format: {"success": false, "error": {"code": "...", "message": "...", "details": {}}}. Never leak stack traces, secrets or tokens.
+10. Testing is mandatory: write tests, RUN them, and fix failures yourself. Also run lint, type-check and build. Do not just report errors; fix root causes and re-run.
+11. Detect my operating system (I may be on Windows). Use cross-platform commands/scripts and tell me exactly what to install if a tool (Docker, Node, Python, PostgreSQL, Redis) is missing. If Docker is unavailable, provide a documented fallback so work can continue.
+12. Update the documentation and docs/PROGRESS.md for this part.
+13. Git: create branch `feat/part-XX-<name>`, make meaningful conventional commits (feat:, fix:, test:, docs:, chore:), run `git status` before and after, never force-push. Merge into main only after everything passes.
+14. Do not over-engineer. Do not add libraries without a reason. Keep code readable with docstrings/comments where they help a beginner learn.
+15. Do not claim completion unless you have actually verified it. If something blocks you, report "PART X BLOCKED" and explain the real blocker.
+
+ENGINE CONTRACT (used from Part 1 onward)
+Every engine/service returns an EngineResult: { data, explanation, algorithm_receipt, data_labels }. The AlgorithmReceipt records algorithm name, input size, nodes/steps explored, comparisons, elapsed time, and time/space complexity, and is shown in the UI.
+
+FINAL REPORT FORMAT (mandatory)
+End with:
+PART X COMPLETE
+- Implemented
+- Files Added (exact paths)
+- Files Modified
+- Dependencies Added
+- Tests Added
+- Verification: Tests PASS/FAIL | Lint PASS/FAIL | Type Check PASS/FAIL | Build PASS/FAIL
+- Documentation Updated
+- How I can verify it myself (exact commands + what I should see in the browser)
+- Simple explanation of what was built and why (beginner language, explain new terms briefly)
+- Known Limitations
+- Next Recommended Phase
+Then STOP and wait for me.
+=====================================================================
+
+CURRENT PART: PART 1 — REPOSITORY & SYSTEM FOUNDATION
+Use branch name: feat/part-01-foundation
+========================================
+GOAL
+A running, tested, dockerised skeleton: Django/DRF backend + PostgreSQL + Redis + Celery + React/Vite/TS frontend + pure-Python algorithms package + CI + a working health-check that proves every piece talks to every other piece. NO travel features yet.
+
+DEPENDS ON: Part 0 (constitution, folders).
+
+REQUIREMENTS
+A. BACKEND (backend/)
+ 1. Python virtualenv + dependency management (pyproject.toml or requirements/{base,dev,prod}.txt — pick one, justify in an ADR). Pin versions. Django (current LTS or latest stable), djangorestframework, django-environ (or python-decouple), psycopg (v3), django-cors-headers, drf-spectacular, celery, redis, pytest, pytest-django, pytest-cov, factory-boy, ruff, mypy + django-stubs (if practical).
+ 2. Project `config/` with split settings: base.py, dev.py, test.py, prod.py. All secrets/URLs from env. SECRET_KEY, DEBUG, ALLOWED_HOSTS, DATABASE_URL, REDIS_URL, CORS_ALLOWED_ORIGINS, CELERY_* read from env. Prod settings enforce secure defaults.
+ 3. `core` app: (a) custom exception handler producing the standard error format; (b) response helpers; (c) base abstract model with created_at/updated_at (+ UUID primary key decision documented); (d) DataLabel enum (LIVE/ESTIMATED/CACHED/DEMO) as a shared TextChoices; (e) request-ID middleware and structured logging with secret redaction; (f) pagination class with a consistent envelope.
+ 4. Health API: GET /api/v1/health/ (liveness) and GET /api/v1/health/ready/ (checks PostgreSQL, Redis, and Celery broker ping; returns per-component status + latency + app version + environment). Never leak secrets.
+ 5. OpenAPI: /api/schema/ and /api/docs/ (Swagger UI) via drf-spectacular; health endpoints documented.
+ 6. Redis configured as Django cache backend (with key prefix and default timeout) — document what it will be used for.
+ 7. Celery: config/celery.py, autodiscovery, one sample task `core.tasks.ping` and a periodic beat placeholder; worker + beat runnable; a test proving the task runs eagerly.
+ 8. pytest.ini/pyproject config, conftest.py, fixtures, factories. Tests for: health endpoints (healthy + simulated failing dependency), error format, settings loading, request-ID header, logging redaction, celery task.
+B. ALGORITHMS PACKAGE (algorithms/)
+ 1. Installable as a local package (pyproject.toml, `algorithms` importable from backend and tests, NO Django import). Subpackages with __init__.py: searching, sorting, structures, graph, optimization, backtracking, scheduling, similarity, strings, social_choice.
+ 2. algorithms/common/: `AlgorithmReceipt` dataclass (name, category, input_size, steps, comparisons, swaps, nodes_explored, elapsed_ms, time_complexity, space_complexity, notes), `EngineResult` generic dataclass, a `measure` context manager/decorator to capture timing/counters, and a `TraceRecorder` (step events list with type/state/highlights for the future DSA Lab). Fully typed + unit tested.
+C. FRONTEND (frontend/)
+ 1. Vite + React + TypeScript (strict). ESLint + Prettier + Vitest + React Testing Library + jsdom. Path aliases (@/...). Folder structure per constitution (app, components/{ui,trip,itinerary,maps,optimization,algorithms}, pages, layouts, hooks, services, store, utils, assets).
+ 2. API client (fetch or axios) reading VITE_API_BASE_URL, typed responses, unified error handling that understands the standard error format.
+ 3. A temporary `/status` page that calls /health/ready/ and shows each component's status (green/red) with loading and error states. (Real design system comes in Part 2 — keep it clean but simple.)
+ 4. Tests: API client error handling, Status page (loading/success/error).
+D. INFRASTRUCTURE
+ 1. docker-compose.yml: postgres (with volume + healthcheck), redis, backend, celery worker, celery beat, frontend (dev). Backend Dockerfile (multi-stage friendly, non-root user). Frontend Dockerfile.
+ 2. .env.example listing EVERY variable with comments and safe placeholder values; never real secrets. Create a local .env from it (git-ignored).
+ 3. Cross-platform helper scripts (Makefile AND npm/py scripts or PowerShell equivalents for Windows): setup, dev, test, lint, migrate, seed (placeholder), format.
+ 4. If Docker is not installed, document + implement a local-run fallback (local Postgres/Redis, or SQLite ONLY for tests via env switch) and tell me exactly what to install.
+E. CI: .github/workflows/ci.yml running backend lint+tests(with Postgres/Redis services), algorithms tests, frontend lint+typecheck+test+build, with caching.
+F. DOCS: README setup guide (step-by-step for beginners, Windows + Mac/Linux), docs/architecture/overview.md with a Mermaid diagram, docs/deployment/local-dev.md, docs/testing/strategy.md, env variable table.
+
+OUT OF SCOPE: auth, models for travel, UI design system, any real feature.
+
+VERIFICATION (run all and show results)
+`docker compose up` (or fallback) works; /api/v1/health/ready/ returns healthy for DB/Redis/Celery; /api/docs/ loads; backend tests + algorithms tests pass; frontend lint, tsc, tests, build pass; CI YAML is valid; `git status` clean.
+
+GIT: branch `feat/part-01-foundation`; commits: chore: init backend, chore: init frontend, feat: health checks, feat: algorithms common module, chore: docker & ci, docs: setup guide.
+
+=====================================================================
+END OF PART 1 PROMPT. When finished, give the final report and STOP. Do NOT start PART 2.
+=====================================================================
+
+=====================================================================
+MANDATORY SELF-CHECK (do this before writing your final report)
+=====================================================================
+Go back through every numbered requirement in the IN SCOPE / REQUIREMENTS 
+sections above, one by one. For each one, confirm you actually implemented 
+AND tested it — do not rely on memory of what you intended to do.
+
+Build a checklist table: Requirement # | Status (DONE / PARTIAL / SKIPPED) | 
+Evidence (file/test/command that proves it).
+
+If anything is PARTIAL or SKIPPED, either fix it now, or list it honestly 
+under "Known Limitations" in your final report — never omit it silently 
+and never mark the part COMPLETE while calling it done in prose.
+=====================================================================
