@@ -1,0 +1,105 @@
+=====================================================================
+TRAVELMIND — COMMON CONTEXT (applies to EVERY part)
+=====================================================================
+PROJECT
+TravelMind: An Intelligent Travel Planning and Multi-Objective Optimization System Using AI and Data Structures & Algorithms.
+A full-stack, India-first travel planner where AI understands the request and REAL algorithms (Trie, heaps, sorting, graphs, Dijkstra, A*, DP, Knapsack, backtracking, Pareto optimization) do the actual computing. It must be a genuinely intelligent system, not a CRUD site that only looks smart.
+
+STACK
+Frontend: React + Vite + TypeScript. Backend: Python + Django + Django REST Framework. Database: PostgreSQL. Cache/broker: Redis. Background jobs: Celery. Auth: JWT. Docs: OpenAPI (drf-spectacular). Tests: pytest / Vitest / React Testing Library / Playwright. Infra: Docker + docker-compose + GitHub Actions.
+
+YOUR ROLE
+You are the lead architect and senior engineer (full-stack, DSA, AI integration, database, QA, DevOps, docs). I am a BEGINNER/FRESHER building this as a major college Software Engineering project. I want you to actually DO the work in this workspace: inspect, create files, install dependencies, write code, run commands, fix errors. Never tell me to create or paste files manually.
+
+GOLDEN RULES
+1. Implement THIS PART ONLY. Do not start future parts unless something is a genuine dependency (then keep it minimal and say so).
+2. FIRST inspect: `git status`, folder tree, package/requirements files, env files, existing tests, docs/. Read docs/ENGINEERING_CONSTITUTION.md and docs/PROGRESS.md if they exist. Never assume anything exists. Never overwrite working code without a reason.
+3. Before coding, show me a SHORT plan (what you found, what you will add/change, risks). Then implement.
+4. AI is NEVER the source of truth for deterministic work (costs, budgets, routes, scheduling, constraints, ranking). AI is for language understanding, suggestions and explanations. All AI output is validated by deterministic code.
+5. The `algorithms/` package is pure Python and must NOT import Django.
+6. No business logic in React components, Django views or serializers. Use service/use-case modules.
+7. Never hard-code secrets. Use environment variables, `.env` (git-ignored) and `.env.example`. Every external service needs a provider interface plus a mock/demo provider so the app always works offline.
+8. Every data value shown to users carries a trust label: LIVE, ESTIMATED, CACHED, or DEMO. Never present demo/estimated data as live. Never invent live prices, availability, weather or routes.
+9. Consistent API error format: {"success": false, "error": {"code": "...", "message": "...", "details": {}}}. Never leak stack traces, secrets or tokens.
+10. Testing is mandatory: write tests, RUN them, and fix failures yourself. Also run lint, type-check and build. Do not just report errors; fix root causes and re-run.
+11. Detect my operating system (I may be on Windows). Use cross-platform commands/scripts and tell me exactly what to install if a tool (Docker, Node, Python, PostgreSQL, Redis) is missing. If Docker is unavailable, provide a documented fallback so work can continue.
+12. Update the documentation and docs/PROGRESS.md for this part.
+13. Git: create branch `feat/part-XX-<name>`, make meaningful conventional commits (feat:, fix:, test:, docs:, chore:), run `git status` before and after, never force-push. Merge into main only after everything passes.
+14. Do not over-engineer. Do not add libraries without a reason. Keep code readable with docstrings/comments where they help a beginner learn.
+15. Do not claim completion unless you have actually verified it. If something blocks you, report "PART X BLOCKED" and explain the real blocker.
+
+ENGINE CONTRACT (used from Part 1 onward)
+Every engine/service returns an EngineResult: { data, explanation, algorithm_receipt, data_labels }. The AlgorithmReceipt records algorithm name, input size, nodes/steps explored, comparisons, elapsed time, and time/space complexity, and is shown in the UI.
+
+FINAL REPORT FORMAT (mandatory)
+End with:
+PART X COMPLETE
+- Implemented
+- Files Added (exact paths)
+- Files Modified
+- Dependencies Added
+- Tests Added
+- Verification: Tests PASS/FAIL | Lint PASS/FAIL | Type Check PASS/FAIL | Build PASS/FAIL
+- Documentation Updated
+- How I can verify it myself (exact commands + what I should see in the browser)
+- Simple explanation of what was built and why (beginner language, explain new terms briefly)
+- Known Limitations
+- Next Recommended Phase
+Then STOP and wait for me.
+=====================================================================
+
+CURRENT PART: PART 2 — PREMIUM UI/UX DESIGN SYSTEM & FRONTEND FOUNDATION
+Use branch name: feat/part-02-design-system
+===========================================================
+GOAL
+Give TravelMind a distinctive, premium travel-tech look and a reusable component library, plus the landing page and dashboard SHELLS. Real auth and AI come later; use clearly-labelled DEMO data where needed.
+
+DEPENDS ON: Part 1 (frontend foundation).
+
+DESIGN DIRECTION (make it feel like a real product, not a template)
+- Visual language: "intelligent + adventurous". Calm, editorial, spacious. A distinctive color system (e.g., deep ocean/indigo primary, warm sunrise/saffron accent, mint success, coral danger) — define full scales, not just single colors. Avoid default-looking Bootstrap/Material styling.
+- Typography: one display font + one text font (self-host or use a permitted font source), a defined type scale, tight heading tracking, comfortable line heights.
+- Shape/elevation: consistent radius scale, soft layered shadows, glassmorphism only where it helps (hero, floating panels). Subtle motion (150–250ms), respect prefers-reduced-motion.
+- Imagery: do NOT hotlink random copyrighted photos. Use generated gradient/illustration placeholders (SVG patterns, topographic lines, route-line motifs) and a component that accepts an image URL later.
+- Signature elements to design now (static/demo for now): AlgorithmReceiptChip, TrustBadge (LIVE/ESTIMATED/CACHED/DEMO with distinct styles + tooltip), ProgressRing (score), StatCard, RouteLine decorative motif.
+
+REQUIREMENTS
+1. Design tokens as CSS variables (colors, spacing, radius, shadows, z-index, motion, typography) with LIGHT and DARK themes; theme toggle persisted (system default respected); no flash of wrong theme.
+2. Component library in src/components/ui with TypeScript props, a11y (roles, aria, focus rings, keyboard support): Button (variants/sizes/loading), IconButton, Input, Textarea, Select, Combobox shell, Checkbox, Radio, Switch, Slider, Chip/ChipGroup (multi-select — will be used for trip types), Badge, TrustBadge, Card, Avatar, Tabs, Accordion, Modal, Drawer (used for "Why recommended?"), Tooltip, Popover, Toast system, Skeleton, Spinner, ProgressBar, ProgressRing, Stepper (wizard), EmptyState, ErrorState, DataTable, Pagination, Breadcrumbs, StatCard, SectionHeader, AlgorithmReceiptChip, Footer/Navbar pieces. You may use Radix/shadcn-style primitives or headless libs if it saves effort — justify choices in an ADR. Use lucide-react (or similar) for icons and Framer Motion sparingly.
+3. Layouts: PublicLayout (navbar+footer), AppLayout (collapsible sidebar + top bar + mobile bottom nav), AdminLayout shell. Responsive breakpoints defined; test at 360px, 768px, 1280px.
+4. Routing with React Router: public routes (/, /destinations placeholder, /how-it-works, /dsa-lab placeholder), app routes (/app/dashboard, /app/trips placeholder, /app/profile placeholder), admin (/admin placeholder), 404 page. NO real auth yet — leave an AuthGuard placeholder.
+5. Landing page sections: Hero (headline about "AI + algorithms that plan your trip", the smart-trip search box UI with trip-type chips and budget/days inputs — non-functional, submit shows a "coming soon" toast), Live-looking "algorithm at work" animated route graph (pure SVG/canvas, decorative but faithful: nodes light up like Dijkstra), AI discovery section, Featured destinations (DEMO cards, labelled DEMO), How it works (6 steps), "Under the hood" DSA section with a mini interactive widget (e.g., a small budget-knapsack toy that actually computes in the browser), Features grid, Benefits, Testimonial-free social proof (use stats placeholders labelled demo), CTA, Footer.
+6. Dashboard shell: welcome header, stat cards, recent trips list, recommended trips row, AI suggestions panel, budget mini-chart, upcoming trip card, quick actions — all with DEMO data + skeleton loading + empty + error states demonstrating every state.
+7. A hidden-in-production `/design-system` page (dev only) that showcases every component, both themes, all states — acts as living documentation.
+8. Accessibility: semantic HTML, skip-to-content link, focus management in modals/drawers, color-contrast >= WCAG AA in both themes, keyboard navigation for all interactive components. Run an automated a11y check (axe via vitest-axe or Playwright axe) and fix violations.
+9. Performance: route-level code splitting, image/SVG optimization, no layout shift on theme load.
+10. State: lightweight store (Zustand or context) for theme + toasts only.
+
+TESTS
+Component tests (render, interaction, a11y attributes) for the main UI components; theme persistence test; routing tests; landing renders all sections; toast/modal/drawer behaviours; the knapsack toy widget logic test.
+
+OUT OF SCOPE: real login, API-driven data, AI, algorithms package changes.
+
+VERIFICATION: lint, tsc, tests, production build, bundle size report; screenshots at 3 viewports saved to docs/testing/screenshots/part-02/ (use Playwright if available).
+
+DOCS: docs/architecture/frontend-design-system.md (tokens, components, usage rules), update README screenshots.
+GIT: branch `feat/part-02-design-system`.
+
+=====================================================================
+END OF PART 2 PROMPT. When finished, give the final report and STOP. Do NOT start PART 3.
+=====================================================================
+
+=====================================================================
+MANDATORY SELF-CHECK (do this before writing your final report)
+=====================================================================
+Go back through every numbered requirement in the IN SCOPE / REQUIREMENTS 
+sections above, one by one. For each one, confirm you actually implemented 
+AND tested it — do not rely on memory of what you intended to do.
+
+Build a checklist table: Requirement # | Status (DONE / PARTIAL / SKIPPED) | 
+Evidence (file/test/command that proves it).
+
+If anything is PARTIAL or SKIPPED, either fix it now, or list it honestly 
+under "Known Limitations" in your final report — never omit it silently 
+and never mark the part COMPLETE while calling it done in prose.
+=====================================================================
